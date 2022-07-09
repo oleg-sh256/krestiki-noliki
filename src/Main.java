@@ -1,42 +1,20 @@
 import java.util.Random;
 import java.util.Scanner;
 
+
+
+
 public class Main {
+
+
+
 
     static Scanner scanner_in;
     static boolean k_or_n = true; //чем играет пользователь: крестиком(true) или ноликом(false)
     static byte[] pole = {2,2,2, 2,2,2, 2,2,2};
     final static byte bt_empty = 2;
 
-    /******************************************************************************************************************/
-    /*Распечатываем поля таблицы*/
-    /******************************************************************************************************************/
 
-    public static void print_table() {
-        System.out.println("\n================================================");
-        System.out.println("------------------");
-        String str_print= "|";
-        for(byte i = 0; i < pole.length; i++) {
-
-            str_print += "  ";
-
-            if (pole[i] == 1) {
-                str_print += 'X';
-            } else if (pole[i] == 0) {
-                str_print += '0';
-            } else {
-                str_print += (i+1);
-            }
-
-            str_print += "  ";
-
-            if ((i == 2) || (i == 5) || (i == 8)) str_print += " |\n";
-            if ((i == 2) || (i == 5)) str_print += "|----------------|\n|";
-
-        }
-        System.out.print(str_print);
-        System.out.println("------------------\n");
-    }
 
     /******************************************************************************************************************/
     /*Ход игрока*/
