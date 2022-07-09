@@ -194,71 +194,7 @@ public class Main {
 
     }
 
-    /******************************************************************************************************************/
-    /*Искусственный интеллект - анализ*/
-    /******************************************************************************************************************/
 
-    public static byte comp_ai_analiz(byte bt_test, byte bt_empty) {
-
-        //Потенциально интересная ячейка
-        byte bt_vajno = -1;
-
-        /*
-        0 1 2
-        3 4 5
-        6 7 8
-        */
-
-        // Горизонтали
-        if ((pole[0] == bt_test) && (pole[1] == bt_test) && (pole[2] == bt_empty)) bt_vajno = 2;
-        if ((pole[0] == bt_empty) && (pole[1] == bt_test) && (pole[2] == bt_test)) bt_vajno = 0;
-        if ((pole[0] == bt_test) && (pole[1] == bt_empty) && (pole[2] == bt_test)) bt_vajno = 1;
-
-        if ((pole[3] == bt_test) && (pole[4] == bt_test) && (pole[5] == bt_empty)) bt_vajno = 5;
-        if ((pole[3] == bt_empty) && (pole[4] == bt_test) && (pole[5] == bt_test)) bt_vajno = 3;
-        if ((pole[3] == bt_test) && (pole[4] == bt_empty) && (pole[5] == bt_test)) bt_vajno = 4;
-
-        if ((pole[6] == bt_test) && (pole[7] == bt_test) && (pole[8] == bt_empty)) bt_vajno = 8;
-        if ((pole[6] == bt_empty) && (pole[7] == bt_test) && (pole[8] == bt_test)) bt_vajno = 6;
-        if ((pole[6] == bt_test) && (pole[7] == bt_empty) && (pole[8] == bt_test)) bt_vajno = 7;
-
-        /*
-        0 1 2
-        3 4 5
-        6 7 8
-        */
-
-        // Вертикали
-        if ((pole[0] == bt_test) && (pole[3] == bt_test) && (pole[6] == bt_empty)) bt_vajno = 6;
-        if ((pole[0] == bt_empty) && (pole[3] == bt_test) && (pole[6] == bt_test)) bt_vajno = 0;
-        if ((pole[0] == bt_test) && (pole[3] == bt_empty) && (pole[6] == bt_test)) bt_vajno = 3;
-
-        if ((pole[1] == bt_test) && (pole[4] == bt_test) && (pole[7] == bt_empty)) bt_vajno = 7;
-        if ((pole[1] == bt_empty) && (pole[4] == bt_test) && (pole[7] == bt_test)) bt_vajno = 1;
-        if ((pole[1] == bt_test) && (pole[4] == bt_empty) && (pole[7] == bt_test)) bt_vajno = 4;
-
-        if ((pole[2] == bt_test) && (pole[5] == bt_test) && (pole[8] == bt_empty)) bt_vajno = 8;
-        if ((pole[2] == bt_empty) && (pole[5] == bt_test) && (pole[8] == bt_test)) bt_vajno = 2;
-        if ((pole[2] == bt_test) && (pole[5] == bt_empty) && (pole[8] == bt_test)) bt_vajno = 5;
-
-        /*
-        0 1 2
-        3 4 5
-        6 7 8
-        */
-
-        // Диагонали
-        if ((pole[0] == bt_test) && (pole[4] == bt_test) && (pole[8] == bt_empty)) bt_vajno = 8;
-        if ((pole[0] == bt_empty) && (pole[4] == bt_test) && (pole[8] == bt_test)) bt_vajno = 0;
-        if ((pole[0] == bt_test) && (pole[4] == bt_empty) && (pole[8] == bt_test)) bt_vajno = 4;
-
-        if ((pole[2] == bt_test) && (pole[4] == bt_test) && (pole[6] == bt_empty)) bt_vajno = 6;
-        if ((pole[2] == bt_empty) && (pole[4] == bt_test) && (pole[6] == bt_test)) bt_vajno = 2;
-        if ((pole[2] == bt_test) && (pole[4] == bt_empty) && (pole[6] == bt_test)) bt_vajno = 4;
-
-        System.out.println("debug: comp_ai_analiz: " + (1+bt_vajno));
-        return bt_vajno;
-    }
 
     /******************************************************************************************************************/
     /*Искусственный интеллект - стратегия*/
@@ -371,36 +307,7 @@ public class Main {
         return bt_rez;
     }
 
-    /******************************************************************************************************************/
-    /*Проверка выиграл ли кто-то?*/
-    /*Параметры: byte bt_test - какой знак тестируем, крестики(1) или нолики(0)?*/
-    /*Возвращаемое значение: boolean - тестируемый знак точно выиграл(истина)/неизвестность*/
-    /******************************************************************************************************************/
 
-    public static boolean test_znak_win(boolean b_test) {
-
-        byte bt_test = (byte)((b_test) ? 1 : 0);
-
-        /*
-        0 1 2
-        3 4 5
-        6 7 8
-        */
-
-        //Горизонтали + вертикали + диагонали
-        if (    ((pole[0] == bt_test) && (pole[1] == bt_test) && (pole[2] == bt_test)) ||
-                ((pole[3] == bt_test) && (pole[4] == bt_test) && (pole[5] == bt_test)) ||
-                ((pole[6] == bt_test) && (pole[7] == bt_test) && (pole[8] == bt_test)) ||
-                ((pole[0] == bt_test) && (pole[3] == bt_test) && (pole[6] == bt_test)) ||
-                ((pole[1] == bt_test) && (pole[4] == bt_test) && (pole[7] == bt_test)) ||
-                ((pole[2] == bt_test) && (pole[5] == bt_test) && (pole[8] == bt_test)) ||
-                ((pole[0] == bt_test) && (pole[4] == bt_test) && (pole[8] == bt_test)) ||
-                ((pole[2] == bt_test) && (pole[4] == bt_test) && (pole[6] == bt_test))) {
-            return true;
-        }
-
-        return false;
-    }
 
     /******************************************************************************************************************/
     /*Отслеживание игрового процесса*/
