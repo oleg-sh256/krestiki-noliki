@@ -18,7 +18,7 @@ public class pole {
     */
     /******************************************************************************************************************/
 
-    public void pole(boolean b_user_znak) {
+    public static void pole(boolean b_user_znak) {
 
         bt_user_znak = (byte)((b_user_znak) ? 1 : 0);
         bt_comp_znak = (byte)((b_user_znak) ? 0 : 1);
@@ -51,7 +51,7 @@ public class pole {
     */
     /******************************************************************************************************************/
 
-    public void printField() {
+    public static void printField() {
         System.out.println("\n================================================");
         System.out.println("------------------");
         String str_print= "|";
@@ -132,7 +132,7 @@ public class pole {
     */
     /******************************************************************************************************************/
 
-    public boolean setIndex(int n_index, int n_value) {
+    public static boolean setIndex(int n_index, int n_value) {
 
         if ((n_index < 0) || (n_index > 8) || (n_value < 0) || (n_value > 2)) {
             return false;
@@ -143,6 +143,54 @@ public class pole {
 
     }
 
+
+    /******************************************************************************************************************/
+    /* length - сколько всего клеток занято на поле(юзер+компьютер)
+    Параметры:
+        нет
+    Возвращаемое значение:
+        byte - количество клеток
+    */
+    /******************************************************************************************************************/
+
+    public static byte lengthAll() {
+
+        byte bt_counter = 0;
+        for(byte i = 0; i < ar_pole.length; i++){
+            if ((pole.index(i) == bt_comp_znak) || (pole.index(i) == bt_user_znak)) {
+                bt_counter++;
+            }
+        }
+
+        System.out.println("debug: length: " + bt_counter);
+
+        return bt_counter;
+
+    }
+
+    /******************************************************************************************************************/
+    /* userLength - сколько клеток занято на поле под знаки компьютера
+    Параметры:
+        нет
+    Возвращаемое значение:
+        byte - количество клеток
+    */
+    /******************************************************************************************************************/
+
+    public static byte userLength() {
+
+        byte bt_counter = 0;
+        for(byte i = 0; i < ar_pole.length; i++){
+            if (pole.index(i) == bt_user_znak) {
+                bt_counter++;
+            }
+        }
+
+        System.out.println("debug: userLength: " + bt_counter);
+
+        return bt_counter;
+
+    }
 
     /******************************************************************************************************************/
     /* compLength - сколько клеток занято на поле под знаки компьютера
@@ -161,6 +209,8 @@ public class pole {
                 bt_counter++;
             }
         }
+
+        System.out.println("debug: compLength: " + bt_counter);
 
         return bt_counter;
 
