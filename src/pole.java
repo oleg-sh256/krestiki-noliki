@@ -21,15 +21,16 @@ public class pole {
     public void pole(boolean b_user_znak) {
 
         bt_user_znak = (byte)((b_user_znak) ? 1 : 0);
+        bt_comp_znak = (byte)((b_user_znak) ? 0 : 1);
 
-        for(byte i = 0; i < ar_pole.length; i++){
+        for (byte i = 0; i < ar_pole.length; i++) {
             ar_pole[i] = bt_empty;
         }
 
     }
 
     /******************************************************************************************************************/
-    /* print_pole - отображаем поле на экране
+    /* printField - отображаем поле на экране
     Параметры:
         нет
     Возвращаемое значение:
@@ -50,11 +51,11 @@ public class pole {
     */
     /******************************************************************************************************************/
 
-    public void print_pole() {
+    public void printField() {
         System.out.println("\n================================================");
         System.out.println("------------------");
         String str_print= "|";
-        for(byte i = 0; i < ar_pole.length; i++) {
+        for (byte i = 0; i < ar_pole.length; i++) {
 
             str_print += "  ";
 
@@ -139,6 +140,29 @@ public class pole {
 
         ar_pole[n_index] = (byte)n_value;
         return true;
+
+    }
+
+
+    /******************************************************************************************************************/
+    /* compLength - сколько клеток занято на поле под знаки компьютера
+    Параметры:
+        нет
+    Возвращаемое значение:
+        byte - количество клеток
+    */
+    /******************************************************************************************************************/
+
+    public static byte compLength() {
+
+        byte bt_counter = 0;
+        for(byte i = 0; i < ar_pole.length; i++){
+            if (pole.index(i) == bt_comp_znak) {
+                bt_counter++;
+            }
+        }
+
+        return bt_counter;
 
     }
 

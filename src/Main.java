@@ -6,15 +6,10 @@ import java.util.Scanner;
 
 public class Main {
 
-
-
-
     static Scanner scanner_in;
     static boolean k_or_n = true; //чем играет пользователь: крестиком(true) или ноликом(false)
     static byte[] pole = {2,2,2, 2,2,2, 2,2,2};
     final static byte bt_empty = 2;
-
-
 
     /******************************************************************************************************************/
     /*Ход игрока*/
@@ -51,150 +46,6 @@ public class Main {
 
         return bt_num;
     }
-
-    /******************************************************************************************************************/
-    /*Искусственный интеллект - первый ход*/
-    /******************************************************************************************************************/
-
-    public static byte comp_ai_pervyi_hod(byte bt_empty) {
-
-        byte bt_start_index = -1;
-        Random random = new Random();
-        byte bt_counter_anti_bug = 0;
-
-        while(true) {
-
-            bt_start_index = (byte)random.nextInt(8);
-
-            // Перед нами первым ходил человек,
-            // поэтому проверяем пуста ли ячейка?
-            if (pole[bt_start_index] == bt_empty) break;
-
-            //Мера предосторожности
-            if (bt_counter_anti_bug == 100) break;
-            bt_counter_anti_bug++;
-        }
-
-        System.out.println("debug: comp_ai_pervyi_hod: " + (1+bt_start_index));
-
-        return bt_start_index;
-    }
-
-    /******************************************************************************************************************/
-    /*Искусственный интеллект - поиск выгоды*/
-    /******************************************************************************************************************/
-
-    public static byte comp_ai_vyigoda(byte bt_comp_znak, byte bt_empty) {
-
-        //Потенциально выгодные ячейки
-        byte bt_interesno1 = -1;
-        byte bt_interesno2 = -1;
-
-        /*
-        0 1 2
-        3 4 5
-        6 7 8
-        */
-
-        // Горизонтали
-        if ((pole[0] == bt_comp_znak) && (pole[1] == bt_empty) && (pole[2] == bt_empty)) bt_interesno1 = 2;
-        if ((pole[0] == bt_empty) && (pole[1] == bt_empty) && (pole[2] == bt_comp_znak)) bt_interesno1 = 0;
-        if ((pole[0] == bt_empty) && (pole[1] == bt_comp_znak) && (pole[2] == bt_empty)) {
-            bt_interesno1 = 0;
-            bt_interesno2 = 2;
-        }
-
-        if ((pole[3] == bt_comp_znak) && (pole[4] == bt_empty) && (pole[5] == bt_empty)) bt_interesno1 = 5;
-        if ((pole[3] == bt_empty) && (pole[4] == bt_empty) && (pole[5] == bt_comp_znak)) bt_interesno1 = 3;
-        if ((pole[3] == bt_empty) && (pole[4] == bt_comp_znak) && (pole[5] == bt_empty)) {
-            bt_interesno1 = 3;
-            bt_interesno2 = 5;
-        }
-
-        if ((pole[6] == bt_comp_znak) && (pole[7] == bt_empty) && (pole[8] == bt_empty)) bt_interesno1 = 8;
-        if ((pole[6] == bt_empty) && (pole[7] == bt_empty) && (pole[8] == bt_comp_znak)) bt_interesno1 = 6;
-        if ((pole[6] == bt_empty) && (pole[7] == bt_comp_znak) && (pole[8] == bt_empty)) {
-            bt_interesno1 = 6;
-            bt_interesno2 = 8;
-        }
-
-        /*
-        0 1 2
-        3 4 5
-        6 7 8
-        */
-
-        // Вертикали
-        if ((pole[0] == bt_comp_znak) && (pole[3] == bt_empty) && (pole[6] == bt_empty)) bt_interesno1 = 6;
-        if ((pole[0] == bt_empty) && (pole[3] == bt_empty) && (pole[6] == bt_comp_znak)) bt_interesno1 = 0;
-        if ((pole[0] == bt_empty) && (pole[3] == bt_comp_znak) && (pole[6] == bt_empty)) {
-            bt_interesno1 = 0;
-            bt_interesno2 = 6;
-        }
-
-        if ((pole[1] == bt_comp_znak) && (pole[4] == bt_empty) && (pole[7] == bt_empty)) bt_interesno1 = 7;
-        if ((pole[1] == bt_empty) && (pole[4] == bt_empty) && (pole[7] == bt_comp_znak)) bt_interesno1 = 1;
-        if ((pole[1] == bt_empty) && (pole[4] == bt_comp_znak) && (pole[7] == bt_empty)) {
-            bt_interesno1 = 1;
-            bt_interesno2 = 7;
-        }
-
-        if ((pole[2] == bt_comp_znak) && (pole[5] == bt_empty) && (pole[8] == bt_empty)) bt_interesno1 = 8;
-        if ((pole[2] == bt_empty) && (pole[5] == bt_empty) && (pole[8] == bt_comp_znak)) bt_interesno1 = 2;
-        if ((pole[2] == bt_empty) && (pole[5] == bt_comp_znak) && (pole[8] == bt_empty)) {
-            bt_interesno1 = 2;
-            bt_interesno2 = 8;
-        }
-
-        /*
-        0 1 2
-        3 4 5
-        6 7 8
-        */
-
-        // Диагонали
-        if ((pole[0] == bt_comp_znak) && (pole[4] == bt_empty) && (pole[8] == bt_empty)) bt_interesno1 = 8;
-        if ((pole[0] == bt_empty) && (pole[4] == bt_empty) && (pole[8] == bt_comp_znak)) bt_interesno1 = 0;
-        if ((pole[0] == bt_empty) && (pole[4] == bt_comp_znak) && (pole[8] == bt_empty)) {
-            bt_interesno1 = 0;
-            bt_interesno2 = 8;
-        }
-
-        if ((pole[2] == bt_comp_znak) && (pole[4] == bt_empty) && (pole[6] == bt_empty)) bt_interesno1 = 6;
-        if ((pole[2] == bt_empty) && (pole[4] == bt_empty) && (pole[6] == bt_comp_znak)) bt_interesno1 = 2;
-        if ((pole[2] == bt_empty) && (pole[4] == bt_comp_znak) && (pole[6] == bt_empty)) {
-            bt_interesno1 = 2;
-            bt_interesno2 = 8;
-        }
-
-        // Присутствуют потенциально две интересных ячейки, выбираем одну
-        if (bt_interesno2 != -1) {
-
-            // Если процент занятых клеток большой, то выбираем меньшую переменную,
-            // но если игра только начинается, то большую.
-            byte bt_counter = 0;
-            for(byte i = 0; i < pole.length; i++){
-                if (pole[i] == 2) {
-                    bt_counter++;
-                }
-            }
-
-            if (bt_counter >= 4) {
-                System.out.println("debug: comp_ai_vyigoda: " + (1+bt_interesno1));
-                return bt_interesno1;
-            } else {
-                System.out.println("debug: comp_ai_vyigoda: " + (1+bt_interesno2));
-                return bt_interesno2;
-            }
-
-        }
-
-        System.out.println("debug: comp_ai_vyigoda: " + (1+bt_interesno1));
-        return bt_interesno1;
-
-    }
-
-
 
     /******************************************************************************************************************/
     /*Искусственный интеллект - стратегия*/
