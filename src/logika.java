@@ -19,7 +19,7 @@ public class logika {
 
     public static byte compFirstStep() {
 
-        byte bt_start_index = -1;
+        byte bt_start_index;
         Random random = new Random();
         byte bt_counter_anti_bug = 0;
 
@@ -268,13 +268,13 @@ public class logika {
         //Горизонтали + вертикали + диагонали
         if (
                 ((pole.index(0) == bt_gamer) && (pole.index(1) == bt_gamer) && (pole.index(2) == bt_gamer)) ||
-                        ((pole.index(3) == bt_gamer) && (pole.index(4) == bt_gamer) && (pole.index(5) == bt_gamer)) ||
-                        ((pole.index(6) == bt_gamer) && (pole.index(7) == bt_gamer) && (pole.index(8) == bt_gamer)) ||
-                        ((pole.index(0) == bt_gamer) && (pole.index(3) == bt_gamer) && (pole.index(6) == bt_gamer)) ||
-                        ((pole.index(1) == bt_gamer) && (pole.index(4) == bt_gamer) && (pole.index(7) == bt_gamer)) ||
-                        ((pole.index(2) == bt_gamer) && (pole.index(5) == bt_gamer) && (pole.index(8) == bt_gamer)) ||
-                        ((pole.index(0) == bt_gamer) && (pole.index(4) == bt_gamer) && (pole.index(8) == bt_gamer)) ||
-                        ((pole.index(2) == bt_gamer) && (pole.index(4) == bt_gamer) && (pole.index(6) == bt_gamer))
+                ((pole.index(3) == bt_gamer) && (pole.index(4) == bt_gamer) && (pole.index(5) == bt_gamer)) ||
+                ((pole.index(6) == bt_gamer) && (pole.index(7) == bt_gamer) && (pole.index(8) == bt_gamer)) ||
+                ((pole.index(0) == bt_gamer) && (pole.index(3) == bt_gamer) && (pole.index(6) == bt_gamer)) ||
+                ((pole.index(1) == bt_gamer) && (pole.index(4) == bt_gamer) && (pole.index(7) == bt_gamer)) ||
+                ((pole.index(2) == bt_gamer) && (pole.index(5) == bt_gamer) && (pole.index(8) == bt_gamer)) ||
+                ((pole.index(0) == bt_gamer) && (pole.index(4) == bt_gamer) && (pole.index(8) == bt_gamer)) ||
+                ((pole.index(2) == bt_gamer) && (pole.index(4) == bt_gamer) && (pole.index(6) == bt_gamer))
         ) {
             return true;
         }

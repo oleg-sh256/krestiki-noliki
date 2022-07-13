@@ -40,9 +40,11 @@ public class Game {
             //Проверка: Занята ли ячейка или нет?
             if (pole.index(bt_num_hod) != 0) {
                 System.out.println("Ячейка уже занята, повторите ввод");
-                continue;
 
             } else {
+                //Занимаем ячейку.
+                //Цифра 1, означает пользователя
+                //(независимо от того, чем он играет: ноликами или крестиками)
                 pole.setIndex(bt_num_hod, 1);
                 break;
 
@@ -104,38 +106,22 @@ public class Game {
 
         } else {
 
+            //Цифра 2, означает компьютер
+            //(независимо от того, чем он играет: ноликами или крестиками)
             pole.setIndex(bt_step, 2);
 
-            String str_index = "";
-            switch (bt_step) {
-                case 0:
-                    str_index = "первая";
-                    break;
-                case 1:
-                    str_index = "вторая";
-                    break;
-                case 2:
-                    str_index = "третья";
-                    break;
-                case 3:
-                    str_index = "четвёртая";
-                    break;
-                case 4:
-                    str_index = "пятая";
-                    break;
-                case 5:
-                    str_index = "шестая";
-                    break;
-                case 6:
-                    str_index = "седьмая";
-                    break;
-                case 7:
-                    str_index = "восьмая";
-                    break;
-                case 8:
-                    str_index = "девятая";
-                    break;
-            }
+            String str_index = switch (bt_step) {
+                case 0 -> "первая";
+                case 1 -> "вторая";
+                case 2 -> "третья";
+                case 3 -> "четвёртая";
+                case 4 -> "пятая";
+                case 5 -> "шестая";
+                case 6 -> "седьмая";
+                case 7 -> "восьмая";
+                case 8 -> "девятая";
+                default -> "";
+            };
             System.out.println("\nХодит компьютер. \nХод: " + str_index + " ячейка");
         }
 

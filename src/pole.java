@@ -138,7 +138,17 @@ public class pole {
             return false;
         }
 
-        ar_pole[n_index] = (byte)n_value;
+        //Переводим полученное значение во внутренние представление
+        //так в массиве записано представление уже в виде крестик(1)/нолик(0)/пусто(2),
+        //а нам поступило на вход представление пользователь(1)/компьютер(2)/пусто(0)
+        if (n_value == 1) {
+            ar_pole[n_index] = bt_user_znak;
+        } else if (n_value == 2) {
+            ar_pole[n_index] = bt_comp_znak;
+        } else {
+            ar_pole[n_index] = 0;
+        }
+
         return true;
 
     }
