@@ -6,6 +6,8 @@ import java.util.Scanner;
 /**********************************************************************************************************************/
 public class Game {
 
+    private static Scanner scanner_in = new Scanner(System.in);
+
     /******************************************************************************************************************/
     /*gamerStep - Ход игрока
     Параметры:
@@ -18,8 +20,6 @@ public class Game {
     /******************************************************************************************************************/
 
     public static void gamerStep() {
-
-        Scanner scanner_in = new Scanner(System.in);
 
         pole.printField();
         System.out.print("Ваш ход. \nВведите номер ячейки для своего хода(1-9): ");
@@ -49,8 +49,6 @@ public class Game {
             }
 
         }
-
-        scanner_in.close();
 
     }
 
@@ -101,7 +99,13 @@ public class Game {
             }
         }
 
-        if (bt_step != -1) {
+        if (bt_step == -1) {
+            System.out.println("\nПроизошла ошибка в программе при ходе компьютера. Выход.");
+
+        } else {
+
+            pole.setIndex(bt_step, 2);
+
             String str_index = "";
             switch (bt_step) {
                 case 0:
@@ -196,6 +200,9 @@ public class Game {
             }
 
         }
+
+        //Ввод нам больше не нужен
+        scanner_in.close();
 
         //Завершающее слово будет сказано уже в функции main
         return bt_finish_game;

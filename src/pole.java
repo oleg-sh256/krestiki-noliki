@@ -157,7 +157,9 @@ public class pole {
 
         byte bt_counter = 0;
         for(byte i = 0; i < ar_pole.length; i++){
-            if ((pole.index(i) == bt_comp_znak) || (pole.index(i) == bt_user_znak)) {
+            //Подсчитываем сколько pole.index возвращает цифр 1 и 2,
+            // эти ячейки заняты либо пользователем, либо компьютером
+            if ((pole.index(i) == 1) || (pole.index(i) == 2)) {
                 bt_counter++;
             }
         }
@@ -181,7 +183,8 @@ public class pole {
 
         byte bt_counter = 0;
         for(byte i = 0; i < ar_pole.length; i++){
-            if (pole.index(i) == bt_user_znak) {
+            //Подсчитываем сколько pole.index возвращает цифр 1, эти ячейки заняты пользователем
+            if (pole.index(i) == 1) {
                 bt_counter++;
             }
         }
@@ -205,7 +208,8 @@ public class pole {
 
         byte bt_counter = 0;
         for(byte i = 0; i < ar_pole.length; i++){
-            if (pole.index(i) == bt_comp_znak) {
+            //Подсчитываем сколько pole.index возвращает цифр 2, эти ячейки заняты компьютером
+            if (pole.index(i) == 2) {
                 bt_counter++;
             }
         }
